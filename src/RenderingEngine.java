@@ -150,7 +150,7 @@ public class RenderingEngine implements Engine {
 		drenderer.prepare(view);
 		drenderer.render(box.vao, box.indices, material, HelloWorld.player.transform);
 		drenderer.render(terrain);
-		drenderer.renderLighting(view, camera.pos, dlight, 0);
+		drenderer.renderLighting(view, camera.pos, dlight, 0, window.getWidth(), window.getHeight());
 		GLRendering.renderMesh(box.vao, box.indices);
 		
 		//System.out.println(PhysicsEngine.bodies[0].transform.getTransformation());
