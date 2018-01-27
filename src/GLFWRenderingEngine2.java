@@ -98,7 +98,7 @@ public class GLFWRenderingEngine2 implements Engine {
 		
 		persp = new Projection(fov, window.getWidth(), window.getHeight(), .1f, 1000f);//Matrix4f.createPerspective(fov, aspectRatio, .1f, 1000f);
 		
-		terrain = new Terrain(-0.5f,-0.5f, GLTexture.createTextures(new String[]{"bricks.png", "mud.png", "gauge.png", "grassTexture.png", "blendMap.png"}, 3));
+		terrain = new Terrain(100, 2, -0.5f,-0.5f, GLTexture.createTextures(new String[]{"bricks.png", "mud.png", "gauge.png", "grassTexture.png", "blendMap.png"}, 3));
 		
 		//org.joml.Matrix4f jm = new org.joml.Matrix4f().ortho(-400, 400, -300, 300, 0.1f, 1000f, false);//.orthographic(fov, window.getWidth() / window.getHeight(), .1f, 1000f);
 	    drenderer = new DeferredRenderer(window.getWidth(), window.getHeight(), true, new Matrix4f().perspective(fov, window.getWidth() / window.getHeight(), .1f, 1000f));
