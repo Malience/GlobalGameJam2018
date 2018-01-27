@@ -73,7 +73,7 @@ void main()
 	vec3 viewDir = normalize(viewPos - FragPos);
 	float AmbientOcclusion = texture(ssao, TexCoord0).r;
 	
-	vec3 output = CalcDirectionalLight(directionalLight, norm, viewDir, AmbientOcclusion, Albedo, Specular);
+	vec3 output_FragColor = CalcDirectionalLight(directionalLight, norm, viewDir, AmbientOcclusion, Albedo, Specular);
 	
-    FragColor = vec4(output, 1.0f);
+    FragColor = vec4(output_FragColor, 1.0f);
 } 
