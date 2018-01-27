@@ -42,7 +42,7 @@ public class HelloWorld {
 		ranges.push(new RangePair("RotateYaw", Camera::rotateYaw));
 		ranges.push(new RangePair("RotatePitch", Camera::rotatePitch));
 		
-		CoreEngine ce = new CoreEngine(new GLFWRenderingEngine2(), new GLFWInputEngine());
+		CoreEngine ce = new CoreEngine(new RenderingEngine(), new GLFWInputEngine(), new PhysicsEngine());
 		ce.start();
 	}
 	public static Vector3f v = new Vector3f();
