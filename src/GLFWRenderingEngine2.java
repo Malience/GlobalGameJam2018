@@ -146,12 +146,17 @@ public class GLFWRenderingEngine2 implements Engine {
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, material.diffuse);
 		GLShader.setUniformMat4(GL20.glGetUniformLocation(shader, "model"), PhysicsEngine.bodies[0].transform.getTransformation());
+		
+		drenderer.prepare(view);
+		
+		drenderer.render(terrain);
+		drenderer.renderLighting(view, camera.pos, dlight, 0);
 		GLRendering.renderMesh(box.vao, box.indices);
 		
 		//System.out.println(PhysicsEngine.bodies[0].transform.getTransformation());
 	    //drenderer.prepare(view);
 	    //drenderer.render(mesh, count, material, transform1);
-	    //drenderer.render(terrain);
+	    
 	    //drenderer.render(box.vao, box.indices, transforms.next, material, transforms.transforms);
 	    //drenderer.renderLighting(view, camera.pos, dlight, 0);
 		
