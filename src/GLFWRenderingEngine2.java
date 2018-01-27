@@ -148,7 +148,7 @@ public class GLFWRenderingEngine2 implements Engine {
 		GLShader.setUniformMat4(GL20.glGetUniformLocation(shader, "model"), PhysicsEngine.bodies[0].transform.getTransformation());
 		
 		drenderer.prepare(view);
-		
+		drenderer.render(box.vao, box.indices, material, HelloWorld.player.transform);
 		drenderer.render(terrain);
 		drenderer.renderLighting(view, camera.pos, dlight, 0);
 		GLRendering.renderMesh(box.vao, box.indices);
