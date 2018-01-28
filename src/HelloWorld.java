@@ -29,6 +29,7 @@ public class HelloWorld {
 		actions.push(new ActionPair("ActionTest", (Runnable)() -> {System.out.println("Action Works!");}));
 		actions.push(new ActionPair("LockCursor", Camera::lockCursor));
 		actions.push(new ActionPair("UnlockCursor", Camera::unlockCursor));
+		actions.push(new ActionPair("Interact", Interaction::pickup));
 		
 		Stack<ActionPair> states = InputMapping.states = new Stack<ActionPair>();
 		states.push(new ActionPair("MoveForward", Camera::moveForward));
@@ -50,6 +51,8 @@ public class HelloWorld {
 		
 		CoreEngine ce = new CoreEngine(new RenderingEngine(), new GLFWInputEngine(), new PhysicsEngine());
 		ce.start();
+		
+		player.camera = RenderingEngine.camera;
 		
 		objects = new GameObject[10]; //Feel free to increase size, adding objects to the array will render them
 		PhysicsEngine.physical_objects = new GameObject[5]; //Holds objects that will fall and interact with enviroment (not implemented)
