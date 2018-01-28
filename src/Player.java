@@ -1,7 +1,11 @@
+import com.base.engine.data.Resources;
+import com.base.engine.rendering.Mesh;
 import com.base.math.Transform;
 
 public class Player {
-	int mesh;
+	public static Mesh mesh;
 	Transform transform;
+	public GameObject held_item;
+	
 	
 }

@@ -2,7 +2,9 @@ import com.base.engine.core.Engine;
 import com.base.engine.rendering.opengl.Terrain;
 
 public class PhysicsEngine implements Engine {
-
+	public static GameObject[] physical_objects;
+	
+	
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub

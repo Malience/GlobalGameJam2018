@@ -17,7 +17,6 @@ import org.lwjgl.opengl.GL32;
 
 import com.base.engine.core.CoreEngine;
 import com.base.engine.core.Engine;
-import com.base.engine.core.GameObject;
 import com.base.engine.core.Time;
 import com.base.engine.core.util.Util;
 import com.base.engine.data.Mesh;
@@ -182,6 +181,8 @@ public class RenderingEngine implements Engine {
 		GL11.glTexParameteri(GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
 		GL32.glFramebufferTexture(GL30.GL_FRAMEBUFFER, GL30.GL_DEPTH_ATTACHMENT, waterRefrD, 0);
 		
+		//THIS SKYBOX DOESN'T WORK!!!\\
+		
 		int skyboxTexture = GLTexture.createCubeMap(new String[] {"top.jpg", "bottom.jpg", "right.jpg", "left.jpg", "front.jpg", "back.jpg"});
 		
 		skybox = new Skybox(Resources.loadShader("skyboxshader.glsl"), skyboxTexture);
@@ -286,6 +287,12 @@ public class RenderingEngine implements Engine {
 	public void renderWorld(Matrix4f view, Vector3f camerapos, DirectionalLight dlight, int framebuffer, int width, int height) {
 		drenderer.prepare(view);
 		drenderer.render(box.vao, box.indices, material, HelloWorld.player.transform);
+		for(int i = 0; i < HelloWorld.objects.length; i++) {
+			GameObject object = HelloWorld.objects[i];
+			if(object == null) continue;
+			drenderer.render(object.mesh.vao, object.mesh.indices, object.material, object.transform);
+		}
+		
 		drenderer.render(terrain);
 		drenderer.renderLighting(view, camerapos, dlight, framebuffer, width, height);
 		//skybox.render(view, framebuffer);
