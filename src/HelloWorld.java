@@ -14,9 +14,11 @@ public class HelloWorld {
 	public static float player_speed = .5f;
 	public static float player_rotate_speed = 0.2f;
 	public static Player player = new Player();
+	public static GameObject[] objects;
 	
 	public static void main(String [] args) {
 		player.transform = new Transform();
+		objects = new GameObject[10];
 		
 		Stack<ActionPair> actions = InputMapping.actions = new Stack<ActionPair>();
 		actions.push(new ActionPair("Jump", (Runnable)() -> System.out.println("Jump!")));
