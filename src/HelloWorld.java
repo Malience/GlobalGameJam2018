@@ -72,7 +72,23 @@ public class HelloWorld {
 		
 		objects[0] = new GameObject(new Transform(5,3,2), mesh, material);
 		
+		
 		PhysicsEngine.physical_objects[0] = Interaction.interactable_objects[0] = objects[0]; //To add objects to the physical and interactable objects
+		
+		// Load basket
+		mesh = Resources.loadMesh("basket.obj"); //You can load a mesh with this method, supports all filetypes suported by Assimp
+		
+		material = new MaterialMap();				//Create Materials
+		texture = Resources.loadTexture("basket.png"); //You can load Textures with this
+		material.diffuse = texture.texture;						//Assigns the diffuse texture to the material (Diffuse is the color)
+		material.specular = material.diffuse;					//Assigns the specular texture to the material (Specular is the shiny parts)
+		material.shininess = 0f;
+		
+		//Materials and meshes can be shared between objects, Transforms should not (Unless you know what you're doing)
+		
+		objects[1] = new GameObject(new Transform(10,2,2), mesh, material);
+		
+		
 		
 		ce.run();
 		
