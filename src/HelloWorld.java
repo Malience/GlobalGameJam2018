@@ -88,7 +88,56 @@ public class HelloWorld {
 		
 		objects[1] = new GameObject(new Transform(10,2,2), mesh, material);
 		
+		// Load watermelons
+		mesh = Resources.loadMesh("watermelon.obj"); //You can load a mesh with this method, supports all filetypes suported by Assimp
 		
+		material = new MaterialMap();				//Create Materials
+		texture = Resources.loadTexture("watermelon.png"); //You can load Textures with this
+		material.diffuse = texture.texture;						//Assigns the diffuse texture to the material (Diffuse is the color)
+		material.specular = material.diffuse;					//Assigns the specular texture to the material (Specular is the shiny parts)
+		material.shininess = 0f;
+		
+		//Materials and meshes can be shared between objects, Transforms should not (Unless you know what you're doing)
+		
+		objects[2] = new GameObject(new Transform(-2,2,2), mesh, material);
+		objects[3] = new GameObject(new Transform(-4,2,2), mesh, material);
+		objects[4] = new GameObject(new Transform(-2,2,4), mesh, material);
+		
+		
+		PhysicsEngine.physical_objects[1] = Interaction.interactable_objects[1] = objects[2];
+		PhysicsEngine.physical_objects[2] = Interaction.interactable_objects[2] = objects[3];
+		PhysicsEngine.physical_objects[3] = Interaction.interactable_objects[3] = objects[4];
+		
+		
+		
+		// Load USBs
+		mesh = Resources.loadMesh("usb.obj"); //You can load a mesh with this method, supports all filetypes suported by Assimp
+		
+		material = new MaterialMap();				//Create Materials
+		texture = Resources.loadTexture("usb.png"); //You can load Textures with this
+		material.diffuse = texture.texture;						//Assigns the diffuse texture to the material (Diffuse is the color)
+		material.specular = material.diffuse;					//Assigns the specular texture to the material (Specular is the shiny parts)
+		material.shininess = 0f;
+		
+		//Materials and meshes can be shared between objects, Transforms should not (Unless you know what you're doing)
+
+		objects[5] = new GameObject(new Transform(-10,2,5), mesh, material);
+		
+		PhysicsEngine.physical_objects[4] = Interaction.interactable_objects[4] = objects[5];
+		
+		// Load skybox
+		mesh = Resources.loadMesh("skybox.obj"); //You can load a mesh with this method, supports all filetypes suported by Assimp
+		
+		material = new MaterialMap();				//Create Materials
+		texture = Resources.loadTexture("1496310477.azureparagon_desloate_rain_field_hills.jpg"); //You can load Textures with this
+		material.diffuse = texture.texture;						//Assigns the diffuse texture to the material (Diffuse is the color)
+		material.specular = material.diffuse;					//Assigns the specular texture to the material (Specular is the shiny parts)
+		material.shininess = 0f;
+		
+		//Materials and meshes can be shared between objects, Transforms should not (Unless you know what you're doing)
+
+		objects[5] = new GameObject(new Transform(0,0,0), mesh, material);
+				
 		
 		ce.run();
 		
