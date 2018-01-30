@@ -187,7 +187,9 @@ public class RenderingEngine implements Engine {
 		
 		skybox = new Skybox(Resources.loadShader("skyboxshader.glsl"), skyboxTexture);
 	    
+		wave = GLTexture.createTexture("dudv.png");
 	}
+	int wave;
 	Skybox skybox;
 	int watershader;
 	int shader;
@@ -271,7 +273,7 @@ public class RenderingEngine implements Engine {
 		GL13.glActiveTexture(GL13.GL_TEXTURE1);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, waterRefrC);
 		GL13.glActiveTexture(GL13.GL_TEXTURE2);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, tex[0]);
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, wave);
 		GLRendering.renderQuad();
 		
 		
@@ -280,7 +282,7 @@ public class RenderingEngine implements Engine {
 		window.swapBuffers();
 		
 		
-		
+		//System.out.println(" RenderingEngineDelta: " + Time.getDelta());
 		
 	}
 	
@@ -299,7 +301,7 @@ public class RenderingEngine implements Engine {
 	}
 	
 	public static float move = 0;
-	public static final float wave_speed = 0.03f;
+	public static final float wave_speed = .2f;
 	int[] dudv;
 	int reflWidth, reflHeight, refrWidth, refrHeight;
 	int waterRefl, waterReflC, waterReflD, waterRefr, waterRefrC, waterRefrD;
